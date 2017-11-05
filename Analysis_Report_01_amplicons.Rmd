@@ -323,7 +323,8 @@ subset_male_obj <- subset_samples(phyloseq_obj,
 
 ```{r male-subset-plot-2}
 # graph male microbiome relative abundance
-plot_bar(subset_male_obj,fill = "Phylum")
+plot_bar(subset_male_obj,
+         fill = "Phylum")
 ```
 ```{r female-microbiome}
 # construct female particpant object
