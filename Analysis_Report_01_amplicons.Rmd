@@ -1,4 +1,4 @@
-install.pac---
+---
 title: "Analysis Report 1: Influence of sex on the diversity of hand surface bacteria."
 author: "Allison Bogisich"
 date: "October 31, 2017"
@@ -13,7 +13,7 @@ Bacteria thrive not only within but on the human body. Maintaining a microbiome 
 
 The bacteria on the skin surface appear to be highly diverse, however the extent of the diverstiy has not been extensively mapped. In addition to having difficulty in identifying the sheer number of bacterial species in a heterogeneous sample, certain culturing methods have shown that certain micorbial taxa are speficic only to the skin environment (@chiller2001skin) , but there has also been an observed amount of variability between individuals in the composition of their skin microbiome (@gao2007molecular, @grice2008diversity). Many questions still remain unanswered about the type of enivronmental and genetic factors that could be contributing to- or even driving- this variability. 
 
-With human DNA, it is highly conventional (and easy) to determine biological gender based on chromosomal signatures. Is it then possible that our microbiomes carry a gender signature as well, since they are so intrinsicly tied to us? 
+With human DNA, it is highly conventional and relatively easy to determine biological gender based on chromosomal signatures. Is it then possible that our microbiomes carry a gender signature as well, since they are so intrinsicly tied to us? 
 
 
 
@@ -231,10 +231,10 @@ unname(taxa)
 ```
 
 ```{r extract-sequences-to-fasta}
-# we want to export the cleaned, trimmed, filtered, denoised sequence variants
+# we want to export the cleaned, trimmed, filtered, de-noised sequence variants
 # so that we can build a phylogeny - we'll build the phylogeny outside of R
 # but we need the fasta file to do so. We keep the names of each sequence as the
-# sequence itself (which is rather confusing), because that's how DADA2 labels
+# sequence itself (which is QUITE confusing), because that's how DADA2 labels
 # it's columns (e.g. 'species')
 # function taken from https://github.com/benjjneb/dada2/issues/88
 export_taxa_table_and_seqs <- function(sequence_table_nochim,
@@ -297,14 +297,14 @@ plot_richness(phyloseq_obj,
 
 **Figure 1**: Alpha diversity measures of the two sample types, colored by gender.
 
-```{r example-phyloseq-plot-2}
-# phylogeny, yay!
-plot_tree(phyloseq_obj,
-          color = "sex_s",
-          ladderize = TRUE) # this arranges the tree branches from short to long
+```{r alpha-diversity-skin}
+# alpha diversity metrics
+sebum_subset_obj <- subset_samples(phyloseq_obj,
+                                   sex_s != "Not applicable")
 ```
 
-**Figure 2**: Inferred phylogeny of sequences, with points on tips representing samples within which each particular taxa occurred. Tree represents maximum likelihood phylogeny inferred using RAxML.
+
+
 
 ```{r male-microbiome}
 # construct male participant object
@@ -312,10 +312,22 @@ subset_male_obj <- subset_samples(phyloseq_obj,
                                   sex_s == "male")
 ```
 
-```{r male-subset-plot}
+```{r male-subset-plot-2}
 # graph male microbiome relative abundance
-plot_bar(subset_male_obj, fill = "Phylum")
+plot_bar(subset_male_obj,fill = "Phylum")
 ```
+```{r female-microbiome}
+# construct female particpant object
+subset_female_obj <- subset_samples(phyloseq_obj,
+                                    sex_s == "female")
+```
+
+```{r female-subset-plot-3}
+# graph female microbiome relative abundance
+plot_bar(subset_female_obj, fill = "Phylum")
+```
+
+
 
 # Discussion
 
