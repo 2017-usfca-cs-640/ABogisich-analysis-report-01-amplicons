@@ -298,9 +298,18 @@ plot_richness(phyloseq_obj,
 **Figure 1**: Alpha diversity measures of the two sample types, colored by gender.
 
 ```{r alpha-diversity-skin}
-# alpha diversity metrics
+# alpha diversity metrics, create subset
 sebum_subset_obj <- subset_samples(phyloseq_obj,
                                    sex_s != "Not applicable")
+# plot alpha diversity of sebum samples
+plot_richness(sebum_subset_obj,
+              x = "env_material_s",
+              measures = c("Shannon", "Simpson"),
+              color = "sex_s") +
+  xlab("Sample Origin") +
+  geom_jitter(width = 0.2) +
+  theme_bw()
+
 ```
 
 
