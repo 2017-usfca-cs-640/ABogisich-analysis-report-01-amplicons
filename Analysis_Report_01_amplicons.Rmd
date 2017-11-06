@@ -9,18 +9,18 @@ csl: bioinformatics.csl
 
 # Introduction. Add about 1.5-2 pages here. Must cite at least 5 peer reviewed articles.
 
-Bacteria thrive not only within, but on almost every surface off the human body. Especially of interest is the microbiome maintained on the largest human organ: the skin. As such, it harbors one of the largest bacterial communities, and has vast potential to have significant impacts on one's health (@dethlefsen2007ecological, @turnbaugh2007human). Skin is a complex habitat with both local and regional variations in not only amount of environmental exposure, but also the cellular make-up of the particular dermal vartiety (@fredricks2001microbial). The great majority of these bacteria are not merely passive nor transcient occupiers of the skin's surface, but instead are uniquely adapted for the particular niches made available in differring regions of the skin (@fierer2008influence). Regions of frequent skin shedding, antimicrobial host defenses, and variance in the amount of exposure to soaps or detergents when cleansing, exposure to UV radiation, and availability of moisture sources are all factors that help to shape the microbial communities which can persist (@roth1988microbial, @cogen2008skin). 
+Bacteria thrive not only within, but on almost every surface off the human body. Especially of interest is the microbiome maintained on the largest human organ: the skin. As such, it harbors one of the largest bacterial communities, and has vast potential to have significant impacts on one's health (@dethlefsen2007ecological, @turnbaugh2007human). Skin is a complex habitat with both local and regional variations in not only amount of environmental exposure, but also the cellular make-up of the particular dermal variety (@fredricks2001microbial). The great majority of these bacteria are not merely passive nor transient occupiers of the skin's surface, but instead are uniquely adapted for the particular niches made available in differing regions of the skin (@fierer2008influence). Regions of frequent skin shedding, antimicrobial host defenses, and variance in the amount of exposure to soaps or detergents when cleansing, exposure to UV radiation, and availability of moisture sources are all factors that help to shape the microbial communities which can persist (@roth1988microbial, @cogen2008skin). 
 
-The bacteria on skin surfaces appears to be highly diverse, however much of the diverstiy has not been extensively mapped. In addition to having difficulty in identifying the sheer number of bacterial species in a heterogeneous sample, certain culturing methods have shown that some taxa are speficic to the skin environment and are difficult to grow in monoculture (@chiller2001skin). Previous research has also observed consistent amounts of variability between individuals in the composition of their skin microbiomes (@gao2007molecular, @grice2008diversity). Many questions still remain unanswered about the type of enivronmental and genetic factors that could be contributing to-or even driving-this variability. 
+The bacteria on skin surfaces appears to be highly diverse, however much of the diversity has not been extensively mapped. In addition to having difficulty in identifying the sheer number of bacterial species in a heterogeneous sample, certain culturing methods have shown that some taxa are specific to the skin environment and are difficult to grow in mono culture (@chiller2001skin). Previous research has also observed consistent amounts of variability between individuals in the composition of their skin microbiomes (@gao2007molecular, @grice2008diversity). Many questions still remain unanswered about the type of environmental and genetic factors that could be contributing to-or even driving-this variability. 
 
-With human DNA, it is highly conventional and relatively easy to determine biological gender based on chromosomal signature alone. Is it then entirely possible that our microbiomes carry a gender signature as well, since they are so intrinsicly tied to us. In mice, stomach acid analyses have shown gender-specific differences as well as paralleled effects given gonad removal, providing support for mechanisms mediating sex differences in microbiota composition (@mehrabian2016sex). Determining how much microbiota community structure is shaped by both environmental and particularly genetic factors, and which particular aspects are linked to each respective factor could have significant implications for the emerging field of bioforensics.
+With human DNA, it is highly conventional and relatively easy to determine biological gender based on chromosomal signature alone. Is it then entirely possible that our microbiomes carry a gender signature as well, since they are so intrinsically tied to us. In mice, stomach acid analyses have shown gender-specific differences as well as paralleled effects given gonad removal, providing support for mechanisms mediating sex differences in microbiota composition (@mehrabian2016sex). Determining how much microbiota community structure is shaped by both environmental and particularly genetic factors, and which particular aspects are linked to each respective factor could have significant implications for the emerging field of bio-forensics.
 
-Conventional methods of obtaining forensic results from human DNA require suffient amounts of blood, tissue, semen, or saliva on an object. However, it is often difficult to obtain a large (and uncontaminated) enough sample to sequence. In order to boost standard results, recovering bacterial DNA from touched surfaces may be far easier, espeically for identifying objects where clear fingerprints can't be obtained (e.g. fabrics, smudged surfaces, highly textured surfaces) (@fierer2008influence). Given how abundant bacterial cells are on the surface of skin and on shed epidermal cells (@fredricks2001microbial) and how highly personalized bacterial communities are implicates that more research is needed. In this post-analysis of Fierer's research, I now report the degree of sexual dimorphism that exists between male versus female subject's skin microbiomes from the aforementioned project.
+Conventional methods of obtaining forensic results from human DNA require sufficient amounts of blood, tissue, semen, or saliva on an object. However, it is often difficult to obtain a large (and uncontaminated) enough sample to sequence. In order to boost standard results, recovering bacterial DNA from touched surfaces may be far easier, especially for identifying objects where clear fingerprints can't be obtained (e.g. fabrics, smudged surfaces, highly textured surfaces) (@fierer2008influence). Given how abundant bacterial cells are on the surface of skin and on shed epidermal cells (@fredricks2001microbial) and how highly personalized bacterial communities are implicates that more research is needed. In this post-analysis of Fierer's research, I now report the degree of sexual dimorphism that exists between male versus female subject's skin microbiomes from the aforementioned project.
 
 
 # Methods
 
-This post-experimental report is based on metadata output files from a BLAST search based on trimmed and quality checked fasta files from the Fierer team study. The BLAST search matched swabbed and sequenced sebum samples against the GenBank database. Data used was from from NCBI Sequence Read Archive study number ERP022657, of which a summary of the information is available [here](https://www.ncbi.nlm.nih.gov/Traces/study/?WebEnv=NCID_1_128047291_130.14.22.33_5555_1505945515_1626731749_0MetA0_S_HStore&query_key=5). The metadata output process and the resulting files from this study can be found in a Github repository in a `data/metadata` directory available [here] https://github.com/2017-usfca-cs-640/ABogisich-analysis-report-01-amplicons. Using bioinformatic applications in R and R Studio, the metadata output from this repository were reorganized into subsets and transfigured into easily viewable figures to analyze and compare the diversity and potential sexual dimorphism of microbial fanua present on female and male subjects.
+This post-experimental report is based on metadata output files from a BLAST search based on trimmed and quality checked fasta files from the Fierer team study. The BLAST search matched swabbed and sequenced sebum samples against the GenBank database. Data used was from from NCBI Sequence Read Archive study number ERP022657, of which a summary of the information is available [here](https://www.ncbi.nlm.nih.gov/Traces/study/?WebEnv=NCID_1_128047291_130.14.22.33_5555_1505945515_1626731749_0MetA0_S_HStore&query_key=5). The metadata output process and the resulting files from this study can be found in a Github repository in a `data/metadata` directory available [here] https://github.com/2017-usfca-cs-640/ABogisich-analysis-report-01-amplicons. Using bioinformatic applications in R and R Studio, the metadata output from this repository were reorganized into subsets and transfigured into easily view-able figures to analyze and compare the diversity and potential sexual dimorphism of microbial fauna present on female and male subjects.
 
 
 
@@ -29,7 +29,7 @@ This post-experimental report is based on metadata output files from a BLAST sea
 Add about half a page here. In this section instead of first person (I/we), use Fierer et al., since you'll just be describing what they did, based on the methods in their paper.
 
 
-Fierer and his team swabbed for skin-associated bacteria from different epidermal regions for each of their three studies. For the keyboard study, three participants were swabbed on the ventral surface of the distal joint of each fingertip. All individuals were healthy 20-35 year olds that had not taken antibiotics at least six months prior to swabbing. In the "storage" study, autoclaved cotton-tipped swabs moistened with sterile solution were again used, this time to sample the right axilary (armpit) skin surface sixteen times, from two healthy adults. Lastly, in the computer mouse study nine healthy adults were recruited (four female and five male, all 20-35 years of age) who worked in the same University of Colorado building. Using the swabbing technique outlined above, the entirety of the exposed surface of their dominant hand's palm (used to control the computer mice) were awabbed. Palm surfaces were sampled at midday and the particpants had been following typical hand hygiene practices prior to sampling. Swabs were stored at -80 degrees before DNA extraction. The microbial communities on these participants were compared to a previously compiled database from 270 other hands sampled by Fierer and collaborators (@fierer2008influence; @costello2009bacterial). The 270 hands in the database were from left and right palm surfaces belonging to an equal proportion of both healthy male and female volunteers, aged 18-40 years old.
+Fierer and his team swabbed for skin-associated bacteria from different epidermal regions for each of their three studies. For the keyboard study, three participants were swabbed on the ventral surface of the distal joint of each fingertip. All individuals were healthy 20-35 year olds that had not taken antibiotics at least six months prior to swabbing. In the "storage" study, autoclaved cotton-tipped swabs moistened with sterile solution were again used, this time to sample the right axilary (armpit) skin surface sixteen times, from two healthy adults. Lastly, in the computer mouse study nine healthy adults were recruited (four female and five male, all 20-35 years of age) who worked in the same University of Colorado building. Using the swabbing technique outlined above, the entirety of the exposed surface of their dominant hand's palm (used to control the computer mice) were swabbed. Palm surfaces were sampled at midday and the participants had been following typical hand hygiene practices prior to sampling. Swabs were stored at -80 degrees before DNA extraction. The microbial communities on these participants were compared to a previously compiled database from 270 other hands sampled by Fierer and collaborators (@fierer2008influence; @costello2009bacterial). The 270 hands in the database were from left and right palm surfaces belonging to an equal proportion of both healthy male and female volunteers, aged 18-40 years old.
 
 Post DNA extraction from the samples, sequences were processed and analyzed using pyrosequencing procedures akin to Fierer's work in 2008. Sequences were removed if shorter than 200 bp or larger than 300 in length, had a quality score lower than 25, had ambiguous characters or uncorrectable barcodes, or if it did not contain the primer sequence.
 
@@ -308,7 +308,7 @@ plot_richness(sebum_subset_obj,
 ```
 **Figure 1**: Alpha diversity measures of female and male samples, colored by gender.
 
-The communities in this subset are rather undersampled in terms of sequence depth in this dataset.
+The communities in this subset are rather under-sampled in terms of sequence depth in this data set. 
 
 
 ```{r male-microbiome}
@@ -318,7 +318,7 @@ subset_male_obj <- subset_samples(phyloseq_obj,
 ```
 
 ```{r male-subset-plot-2}
-# graph male microbiome relative abundance
+# graph male microbiome relative abundance categorized by phyla
 plot_bar(subset_male_obj,
          fill = "Phylum")
 ```
@@ -331,15 +331,36 @@ subset_female_obj <- subset_samples(phyloseq_obj,
 ```
 
 ```{r female-subset-plot-3}
-# graph female microbiome relative abundance
-plot_bar(subset_female_obj, fill = "Phylum")
+# graph female microbiome relative abundance categorized by phyla
+plot_bar(subset_female_obj, 
+         fill = "Phylum")
 ```
 **Figure 3**: Relative abundance of bacterial phyla in female sebum samples.
+
+```{r male-microbiome-genus-plot-4}
+# graph male microbiome relative abundance categorized by genus
+plot_bar(subset_male_obj,
+         fill = "Genus")
+```
+**Figure 4**: Relative abundance of bacterial genera in male sebum samples.
+
+
+```{r female-microbiome-genus-plot-5}
+# graph female microbiome relative abundance categorized by genus
+plot_bar(subset_female_obj,
+         fill = "Genus")
+```
+**Figure 5**: Relative abundance of bacterial genera in female sebum samples.
+
 
 
 # Discussion
 
 Add around 2-3 pages interpreting your results and considering future directions one might take to analyze these data.
+
+--It would be rather shocking if at the *phylum* level there were statistically significant differences between men and women. It’s just such a high level of taxonomic classification, incorporating all sorts of bacteria that could do very different tasks. If they were statistically different at the phylum this would suggest that men and women have some enormously different bacterial flora – I would be more likely to believe that result is an error than a valid result. To give you some perspective, humans would be classified as Chordata at the phylum level – which includes species from mammals, fish, reptiles, birds and even some weird little guy called a sea squirt.
+
+The trade off is of course that it can be difficult to precisely identify bacteria genera or species that would allow us to make a more specific statement about bacterial diversity between genders or even individuals.--
 
 # Sources Cited
 
