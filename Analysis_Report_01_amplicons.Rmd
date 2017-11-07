@@ -332,7 +332,7 @@ subset_female_obj <- subset_samples(phyloseq_obj,
 
 ```{r female-subset-plot-3}
 # graph female microbiome relative abundance categorized by phyla
-plot_bar(subset_female_obj, 
+plot_bar(subset_female_obj,
          fill = "Phylum")
 ```
 Figure 3: Relative abundance of bacterial phyla in female sebum samples.
