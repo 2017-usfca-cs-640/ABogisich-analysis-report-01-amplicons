@@ -239,8 +239,8 @@ unname(taxa)
 ```{r extract-sequences-to-fasta}
 # we want to export the cleaned, trimmed, filtered, de-noised sequence variants
 # so that we can build tables - phylogenies can be built outside of R-
-# but we will need a fasta file to do so. We keep the names of each sequence as the
-# sequence itself (which is QUITE confusing), because that's how DADA2 labels
+# but we will need a fasta file to do so. We keep the same names of each
+# sequence (which is confusing), because that's how DADA2 labels
 # it's columns (e.g. 'species')
 # function taken from https://github.com/benjjneb/dada2/issues/88
 export_taxa_table_and_seqs <- function(sequence_table_nochim,
