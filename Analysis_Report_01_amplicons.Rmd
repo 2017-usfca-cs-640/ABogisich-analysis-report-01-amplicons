@@ -1,25 +1,47 @@
 ---
-title: "Analysis Report 1: Your Title Here"
-author: "Don Francisco"
-date: "October 20, 2017"
+title: "Analysis Report 1: Influence of sex on the diversity of hand surface bacteria."
+author: "Allison Bogisich"
+date: "October 31, 2017"
 output: github_document
 bibliography: references.bib
 csl: bioinformatics.csl
 ---
 
-# Introduction
+# Introduction. 
 
-Add about 1.5-2 pages here. Must cite at least 5 peer reviewed articles.
+Bacteria thrive not only within, but on almost every surface of the human body. Especially of interest is the microbiome maintained on the largest human organ: the skin. As such, it harbors one of the largest bacterial communities, and has vast potential to have significant impacts on one's health (@dethlefsen2007ecological, @turnbaugh2007human). Skin is a complex habitat with both local and regional variations in not only amount of environmental exposure, but also the cellular make-up of the particular dermal variety (@fredricks2001microbial). The great majority of these bacteria are not merely passive nor transient occupiers of the skin's surface, but instead are uniquely adapted for the particular niches made available in differing regions of the skin (@fierer2008influence). Regions of frequent skin shedding, antimicrobial host defenses, and variance in the amount of exposure to soaps or detergents when cleansing, exposure to UV radiation, and availability of moisture sources are all factors that help to shape the microbial communities which can persist (@roth1988microbial, @cogen2008skin). 
+
+The bacteria on skin surfaces appears to be highly diverse, however much of the diversity has not been extensively mapped. In addition to having difficulty in identifying the sheer number of bacterial species in a heterogeneous sample, certain culturing methods have shown that some taxa are specific to the skin environment and are difficult to grow in mono culture (@chiller2001skin). Previous research has also observed consistent amounts of variability between individuals in the composition of their skin microbiomes (@gao2007molecular, @grice2008diversity). Many questions still remain unanswered about the type of environmental and genetic factors that could be contributing to-or even driving-this variability. 
+
+With human DNA, it is highly conventional and relatively easy to determine biological gender based on chromosomal signature alone. Is it then entirely possible that our microbiomes carry a gender signature as well, since they are so intrinsically tied to us. In mice, stomach acid analyses have shown gender-specific differences as well as paralleled effects given gonad removal, providing support for mechanisms mediating sex differences in microbiota composition (@mehrabian2016sex). Determining how much microbiota community structure is shaped by both environmental and particularly genetic factors, and which particular aspects are linked to each respective factor could have significant implications for the emerging field of bio-forensics.
+
+Only within the past decade or so has the technical capability to sequence complex biological samples  been able to take off to such an astounding extent. Recent developments in phylogenetic community analysis (@lozupone2005unifrac) with high-throughput pyrosequencing methods (@hamady2008error) have established the criteria for not only sequencing microbiome samples, but the very foundations of bacterial forensics. Fierer and his team have conducted a series of studies that demonstrate the strengths and weaknesses of the field (@fierer2010forensic). They found that skin-associated bacterial communities are surprisingly diverse, and that they are independently stable enough to assist traditional forensic evaluations.
+
+Conventional methods of obtaining forensic results from human DNA require sufficient amounts of blood, tissue, semen, or saliva on an object. However, it is often difficult to obtain a large (and uncontaminated) enough sample to sequence. In order to boost standard results, recovering bacterial DNA from touched surfaces may be far easier, especially for identifying objects where clear fingerprints can't be obtained (e.g. fabrics, smudged surfaces, highly textured surfaces) (@fierer2008influence). Given how abundant bacterial cells are on the surface of skin and on shed epidermal cells (@fredricks2001microbial) and how highly personalized bacterial communities are implicates that more research is needed. In this post-analysis of Fierer's research, I now report the degree of sexual dimorphism that exists between male versus female subject's skin microbiomes from the aforementioned project. If a gender signature does exist in skin microbiomes, then I would predict that there will be marked differences in the bacterium making up sebum communities in each respective gender sampled.
+
 
 # Methods
 
+This post-experimental report is based on metadata output files from a BLAST search of trimmed and quality checked fasta files from the Fierer team study. The BLAST search matched swabbed and sequenced sebum samples against the GenBank database. Data used was from from NCBI Sequence Read Archive study number ERP022657, of which a summary of the information is available [here](https://www.ncbi.nlm.nih.gov/Traces/study/?WebEnv=NCID_1_128047291_130.14.22.33_5555_1505945515_1626731749_0MetA0_S_HStore&query_key=5). The metadata output process and the resulting files from this study can be found in a Github repository in a `data/metadata` directory available [here] https://github.com/2017-usfca-cs-640/ABogisich-analysis-report-01-amplicons. Using bioinformatic applications in R and R Studio, the metadata output from this repository were reorganized into subsets and transfigured into easily view-able figures to analyze and compare the diversity and potential sexual dimorphism of microbial fauna present on female and male subjects.
+
+
+
 ## Sample origin and sequencing
 
-Add about half a page here. In this section instead of first person (I/we), use Fierer et al., since you'll just be describing what they did, based on the methods in their paper.
+Fierer and his team swabbed for skin-associated bacteria from different epidermal regions for each of their three studies. For the keyboard study, three participants were swabbed on the ventral surface of the distal joint of each fingertip. All individuals were healthy 20-35 year olds that had not taken antibiotics at least six months prior to swabbing. In the "storage" study, autoclaved cotton-tipped swabs moistened with sterile solution were again used, this time to sample the right axilary (armpit) skin surface sixteen times, from two healthy adults. Lastly, in the computer mouse study nine healthy adults were recruited (four female and five male, all 20-35 years of age) who worked in the same University of Colorado building. Using the swabbing technique outlined above, the entirety of the exposed surface of their dominant hand's palm (used to control the computer mice) were swabbed. Palm surfaces were sampled at midday and the participants had been following typical hand hygiene practices prior to sampling. Swabs were stored at -80 degrees before DNA extraction. The microbial communities on these participants were compared to a previously compiled database from 270 other hands sampled by Fierer and collaborators (@fierer2008influence; @costello2009bacterial). The 270 hands in the database were from left and right palm surfaces belonging to an equal proportion of both healthy male and female volunteers, aged 18-40 years old.
+
+Post DNA extraction from the samples, sequences were processed and analyzed using pyrosequencing procedures akin to Fierer's work in 2008. Sequences were removed if shorter than 200 bp or larger than 300 in length, had a quality score lower than 25, had ambiguous characters or uncorrectable barcodes, or if it did not contain the primer sequence.
+
 
 ## Computational
 
-These are the methods you used. Should probably be at least a half of a page. At a very minimum should include citations for DADA2 [@callahan2016] and phyloseq [@mcmurdie2013]. Note that these don't count towards the five references you need to cite in the introduction.
+The program R version 3.4.2 in conjunction with R Studio version 1.1.383 interface for Windows was used. Several general use packages from the R library were downloaded in order to utilize more specific exploratory data analysis functions. See listing under the code chunk "r load-libraries" for more detailed installation information. References can be found in the references.bib directory, as well as at the bottom of this report. Citations were organized and inserted using citr, accessible [here] https://CRAN.R-project.org/package=citr.
+
+Primary packages used to clean and analyze the data were installed via bioconductor and devtools. The DADA2 package [@callahan2016] was installed for use in conducting fast and accurate sample inferences from amplicon data with single-nucleotide resolution. Seqinr was used to export fastas of our final de-noised variants. Devtools was installed prior to downloading of mctoolsr, which stands for “microbial community analysis tools in R”. Created by Fierer, the intention of the package is to make it faster to manipulate data and perform certain analyses common to microbial community studies, while allowing us to easily access data using established functions (Leff, 2017). Phyloseq [@mcmurdie2013] was the final package installed for my pipeline in order to visualize and quality check my results using tools `plot_bar`, `plot_richness`, `ploterrors` and `plotQualityProfile`.
+
+Raw data was sorted for order and samples were extracted with their appropriate naming system. Base paths and full paths were set for the input and outputs of sample extraction. Quality checks were run prior to any data visualization to ensure that the lengths of the sequences being used were of proper length for obtaining quality scores above 30, which required filtering and trimming all sequences. Error models were also created to analyze each sample individually, and then visualized by plotting. Duplicated sequences and chimeras were then removed from the data set, so as not to compound error.
+`Seqinr` was used next to export the cleaned, trimmed, filtered, de-noised sequence variants so that I could build tables for use in making subset objects of data for desired visual graphics.
+
 
 # Results
 
@@ -47,7 +69,7 @@ library("citr")
 # see info here: https://benjjneb.github.io/dada2/dada-installation.html
 library("dada2")
 
-# This to export a fasta of our final denoised sequence variants
+# This to export a fasta of our final de-noised sequence variants
 library("seqinr")
 
 # To install this you have to install from GitHub
@@ -215,10 +237,10 @@ unname(taxa)
 ```
 
 ```{r extract-sequences-to-fasta}
-# we want to export the cleaned, trimmed, filtered, denoised sequence variants
-# so that we can build a phylogeny - we'll build the phylogeny outside of R
-# but we need the fasta file to do so. We keep the names of each sequence as the
-# sequence itself (which is rather confusing), because that's how DADA2 labels
+# we want to export the cleaned, trimmed, filtered, de-noised sequence variants
+# so that we can build tables - phylogenies can be built outside of R-
+# but we will need a fasta file to do so. We keep the same names of each
+# sequence (which is confusing), because that's how DADA2 labels
 # it's columns (e.g. 'species')
 # function taken from https://github.com/benjjneb/dada2/issues/88
 export_taxa_table_and_seqs <- function(sequence_table_nochim,
@@ -267,32 +289,92 @@ phyloseq_obj <- phyloseq(otu_table(sequence_table_nochim,
                          phy_tree(tree_in)) # phylogeny from sequence variants
 ```
 
-```{r example-phyloseq-plot-1}
-# alpha diversity metrics
-plot_richness(phyloseq_obj,
+
+```{r alpha-diversity-skin}
+# alpha diversity metrics, create subset
+sebum_subset_obj <- subset_samples(phyloseq_obj,
+                                   sex_s != "Not applicable")
+# plot alpha diversity of sebum samples
+plot_richness(sebum_subset_obj,
               x = "env_material_s",
               measures = c("Shannon", "Simpson"),
               color = "sex_s") +
-  xlab("Sample origin") +
+  xlab("Sample Origin") +
   geom_jitter(width = 0.2) +
   theme_bw()
+
+```
+Figure 1: Alpha diversity measures of female and male samples, colored by gender.
+
+The communities in this subset are rather under-sampled in terms of sequence depth in this data set. However, by using the Shannon and Simpson diversity indexes I have plotted the mean species diversity in sites or habitats at a more local/individual's skin scale. The majority of red data points -which indicate female sebum samples- are generally clustering more at the upper half of both diversity indexes, with a few outliers farther down the diversity scale. Conversely, the blue male data points are largely clustering in the lower half of the scale for alpha diversity in both indexes. 
+
+
+```{r male-microbiome}
+# construct male participant object
+subset_male_obj <- subset_samples(phyloseq_obj,
+                                  sex_s == "male")
 ```
 
-**Figure 1**: Alpha diversity measures of the two sample types, colored by gender.
+```{r male-subset-plot-2}
+# graph male microbiome relative abundance categorized by phyla
+plot_bar(subset_male_obj,
+         fill = "Phylum")
+```
+Figure 2: Relative abundance of bacterial phyla in male sebum samples.
 
-```{r example-phyloseq-plot-2}
-# phylogeny, yay!
-plot_tree(phyloseq_obj,
-          color = "sex_s",
-          ladderize = TRUE) # this arranges the tree branches from short to long
+For the five male sebum samples collected, the phylum making up the vast majority of all microbiomes is Proteobacteria. While the abundance does range from about 220 to about 820, it is always the phylum with the greatest representation for each of the men's individual bacterial skin community. One of the samples (ERR1942291) exhibits a considerable abundance of sequences that matched for cyanobacteria and/or chloroplast DNA, while a smaller amount of that phylum is also found in sample ERR1942293. There were also small quantities of male skin bacteria that resulted as sequence matches for Actinobactera. The total levels of bacterial abundance found in each of the male samples were also not consistent, ranging anywhere from about 230 to near 850 at the highest.
+
+```{r female-microbiome}
+# construct female particpant object
+subset_female_obj <- subset_samples(phyloseq_obj,
+                                    sex_s == "female")
 ```
 
-**Figure 2**: Inferred phylogeny of sequences, with points on tips representing samples within which each particular taxa occurred. Tree represents maximum likelihood phylogeny inferred using RAxML.
+```{r female-subset-plot-3}
+# graph female microbiome relative abundance categorized by phyla
+plot_bar(subset_female_obj,
+         fill = "Phylum")
+```
+Figure 3: Relative abundance of bacterial phyla in female sebum samples.
+
+Out of the five female sebum samples collected, the phylum with the greatest overall representation is Proteobacteria. Its abundance ranges from about 20 to about 510, however it was not found in each of the women's individual bacterial skin communities nor did it always make up the largest phylum in their respective communities. The female samples appear to be much more diverse in the types and amounts of each phyla present. There were also noticeable quantities of female skin bacteria that resulted as sequence matches for Actinobactera. The total levels of bacterial abundance found in each of the female samples were also not consistent, ranging anywhere from about 40 to 550.
+
+```{r male-microbiome-genus-plot-4}
+# graph male microbiome relative abundance categorized by genus
+plot_bar(subset_male_obj,
+         fill = "Genus")
+```
+Figure 4: Relative abundance of bacterial genera in male sebum samples.
+
+At the level of genus identification, it became much harder to identify levels of bacterial abundance. In all but one of the male samples, the majority of the DNA sequences did not have a known match in the database. In only one sample -ERR1942293- were the majority of the sequences matched to a genus, *Acinetobacter*. There were other identified genera within the aforementioned sample, however in all other samples the abundances of matched genera were quite low.
+
+
+```{r female-microbiome-genus-plot-5}
+# graph female microbiome relative abundance categorized by genus
+plot_bar(subset_female_obj,
+         fill = "Genus")
+```
+Figure 5: Relative abundance of bacterial genera in female sebum samples.
+
+Sebum samples taken from the skin of the female participants show very little homogeneity across the gender. Their microbial communities had more identified sequence matches, and all but ERR1942285 had more than 50% of bacteria present matched to a genus. Matches for sample ERR1942287 returned with not only the highest abundance of sequence matches but also had the majority of its community biomass match with *Bacillus* DNA sequences. Two other samples (ERR1942281 and ERR1942283), also had the largest portion of their microbial biomass match for one single genus. The respective abundance levels for genera are reflective of the abundance levels for phylum matches in the samples.
+
 
 
 # Discussion
 
-Add around 2-3 pages interpreting your results and considering future directions one might take in analyzing these data.
+In both alpha diversity indexes utilized, each independently displayed female sebum samples as generally having higher amounts of alpha diversity, with the male data largely clustering in the lower half of the scale. While perhaps not statistically significant due to small sampling size, it is a difference worthy of notice. Given that from Fierer's 2008 study, the average palm surface was found to harbor > 150 distinct species-level bacterial phylotypes (with a species being defined as organisms sharing ≥97% identity in their 16S rRNA gene sequences). Fierer and his team also confirmed that culture-based surveys of this type at the skin surface, like surveys conducted in many other microbial habitats (@pace1997molecular), have been found to dramatically underestimate the full extent of bacterial diversity present. So this slight difference in level of alpha diversity in skin sebum could have resulted from relative under sampling of the male experimental subjects. Only further experimentation and averaging of results will determine whether this subtle difference in alpha diversity between genders is real, and not an artifact of this particular experiment.
+
+Although diversity on the hand surfaces measured was high at both phylum and genus levels, three phlya (Actinobacteria, Firmicutes, and Proteobacteria) accounted for about 90% of matched sequences across both genders. It would have been rather shocking if at the phylum level, that a gender signature did exist in microbiomes, with significant differences between men and women. At such a high level of taxonomic classification, this would be incorporating and including many similar classes of bacteria, with each phyla perhaps being exclusively responsible for completing very different metabolic tasks within a microbiome. If the skin microbiomes had indeed been statistically different at the phylum level, it would likely suggest that women and men have enormously different bacterial fauna. It seems logical that at least at the level of phyla, that it should remain relatively conserved across both genders in humans.
+
+Male specimens did have slightly higher levels of phyla abundance, but not diversity, when compared to female samples. I would be curious to see whether this difference in phyla abundance disappears if the samples were adjusted for the size/height of the test subject. As a human grows larger, there is simply more surface area of the skin for bacteria to occupy. Male humans tend to exhibit sexual dimorphism when it comes to height, and as such the male subjects may quite reasonably have had larger palms than the female test subjects, so swabbing the entire surface of a subject's dominant hand would have covered a larger area in males. I'd propose conducting another experiment in which the exact surface area swabbed for both male and female test subjects was controlled for.
+
+Quite striking was the relative abundance of proteobacteria across male samples, relative to the levels observed in female sebum. Proteobacteria are associated with the imbalance of microbiota of the lower reproductive tract of women, and these species are associated with inflammation (@bennett2014principles). While it was one of the most common phyla across both genders, males tended to have much more of them. The immune responses responsible for protecting against foreign bodies in women may be more selective against proteobacteria, if it has a greater potential for causing inflammation or microbiome imbalance in females. It may be that proteobacteria have a greater potential to create imbalance in women rather than in men, since female test subjects exhibited greater diversity of phyla and genera in their microbial makeup. Actinobacteria which were present in greater abundance in women, may tend to compete for identical or perhaps overlapping microbial niches as those filled by proteobacteria. If proteobacteria are less able to persist on female skin surfaces due to heightened immune responses, actinobacterial abundance would be able to represent a larger portion of the epidermal biomass.
+
+While the number of unique genera which had sequence matches was exponentially higher than the number of phyla matched, there were far more sequences that remaining unidentified when it came down to the lower level of classification. This is likely due to just how recently microbial genomes were able to be sequenced from heterogeneous samples. More and more are being sequenced each year, and if these sequences were matched against the database again in a couple of years it is likely that more sequences would have exact matches. Especially considering that some of the DNA sequences from male hands matched cyanobacterium, the amount of sequence representation for bacteria is still prone to false positives when it comes to sequence matching.
+
+Sexual dimorphism is a commonly noted characteristic for a wide variety of disorders, including- but not limited to- certain autoimmune, metabolic, cardiovascular and psychiatric diseases (@whitacre2001sex,@varlamov2015sex,@arnold2012understanding). However, it does not occur to be the case in the general makeup of sebum microbiomes across genders. Unfortunately, the findings from this post-experimental data analysis are largely inconclusive, and it is extremely necessary that a great deal more skin bacterial communities be swabbed in order to have a more substantial sample size. It would also be useful to conduct further research where skin swabs are compared from different locations on the skin: elbows, armpits, and the like. Skin bacterial communities are likely not uniform across the body, and surfaces closer in proximity may consequentially harbor more similar communities. Additional research in order to map range distribution of bacterial taxa across the entirety of human skin surfaces, would allow us to specifically test this gender diversity hypothesis even further. Until such work is conducted , the lack of significant differences of microbial communities between genders should question the validity of any intended use for determining gender from microbial DNA within the field of bioforensics.
+
+
 
 # Sources Cited
 
